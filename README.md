@@ -1,4 +1,4 @@
-UPE CODING Challenge
+# UPE CODING Challenge
 
 To run, use the following command:
 ```
