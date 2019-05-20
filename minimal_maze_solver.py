@@ -10,10 +10,10 @@ for i in range(5):
         next_spot = maze_stack.pop()
         while abs(next_spot[0] - new_body['cur_loc'][0]) + abs(next_spot[1] - new_body['cur_loc'][1]) > 1:
             last_move = move_list.pop()
-            new_body['cur_loc'][{'up': 1, 'down': 1, 'right': 0, 'left': 0}[last_move]], body = new_body['cur_loc'][{'up': 1, 'down': 1, 'right': 0, 'left': 0}[last_move]] - {'up': -1, 'down': +1, 'right': +1, 'left': -1}[last_move], requests.post(url + '/game?token=' + requests.post(url + '/session', data = {'uid': '205125796'}).json()['token'], data = {'action': {'up': 'down', 'down': 'up', 'right': 'left', 'left': 'right'}[last_move]}).json()
+            new_body['cur_loc'][{'up': 1, 'down': 1, 'right': 0, 'left': 0}[last_move]], body = new_body['cur_loc'][{'up': 1, 'down': 1, 'right': 0, 'left': 0}[last_move]] - {'up': -1, 'down': 1, 'right': 1, 'left': -1}[last_move], requests.post(url + '/game?token=' + requests.post(url + '/session', data = {'uid': '205125796'}).json()['token'], data = {'action': {'up': 'down', 'down': 'up', 'right': 'left', 'left': 'right'}[last_move]}).json()
         action = (('up', 'down')[next_spot[1] > new_body['cur_loc'][1]], ('left', 'right')[next_spot[0] > new_body['cur_loc'][0]])[next_spot[0] != new_body['cur_loc'][0]]
         body, maze[next_spot[0]][next_spot[1]] = requests.post(url + '/game?token=' + requests.post(url + '/session', data = {'uid': '205125796'}).json()['token'], data = {'action': action}).json(), 1
         if body['result'] == 0:     
-            new_body['cur_loc'][{'up': 1, 'down': 1, 'right': 0, 'left': 0}[action]] += {'up': -1, 'down': +1, 'right': +1, 'left': -1}[action]
+            new_body['cur_loc'][{'up': 1, 'down': 1, 'right': 0, 'left': 0}[action]] += {'up': -1, 'down': 1, 'right': 1, 'left': -1}[action]
             move_list.append(action)
         elif body['result'] == 1: break
